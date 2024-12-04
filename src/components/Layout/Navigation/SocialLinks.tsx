@@ -10,7 +10,7 @@ const socialLinks = [
   },
   {
     icon: Linkedin,
-    href: 'https://linkedin.com',
+    href: 'https://www.linkedin.com/in/aaron-groux/',
     label: 'LinkedIn',
   },
   {
