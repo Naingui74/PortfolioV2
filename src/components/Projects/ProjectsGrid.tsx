@@ -17,7 +17,7 @@ const ProjectsGrid = () => {
     {
       title: 'N4S',
       description: t('projects.n4s'),
-      image: '../../../public/iavoiture.jpeg',
+      image: '/iavoiture.jpeg',
       technologies: ['AI', 'C', 'Autonomous Systems'],
       githubUrl: 'https://github.com/Naingui74/N4S-IA',
     },
@@ -44,7 +44,7 @@ const ProjectsGrid = () => {
     {
       title: 'Artisan Showcase',
       description: t('projects.artisan'),
-      image: '../../../public/vitrine.jpg',
+      image: '/vitrine.jpg',
       technologies: ['Web Development', 'UI/UX', 'CMS', 'SEO', 'Planity API'],
       private: true
     }
