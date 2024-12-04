@@ -11,21 +11,21 @@ const ProjectsGrid = () => {
       title: '42sh',
       description: t('projects.42sh'),
       image: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&q=80&w=1200',
-      technologies: ['C', 'Unix', 'Shell Scripting'],
+      technologies: ['C', 'Unix', 'Shell Scripting', 'Parsing', 'Lexer Parser'],
       githubUrl: 'https://github.com/Naingui74/42sh',
     },
     {
       title: 'N4S',
       description: t('projects.n4s'),
       image: '../../../public/iavoiture.jpeg',
-      technologies: ['AI', 'C++', 'Autonomous Systems'],
+      technologies: ['AI', 'C', 'Autonomous Systems'],
       githubUrl: 'https://github.com/Naingui74/N4S-IA',
     },
     {
       title: 'CV Generator',
       description: t('projects.cv'),
       image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=1200',
-      technologies: ['React', 'JavaScript', 'Styling'],
+      technologies: ['React', 'JavaScript', 'Tailwind CSS'],
       githubUrl: 'https://github.com/Naingui74/Cv-Generator',
     },
     {
@@ -38,14 +38,14 @@ const ProjectsGrid = () => {
       title: 'MEV Bot',
       description: t('projects.mev'),
       image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=1200',
-      technologies: ['Solana', 'Blockchain', 'Trading'],
+      technologies: ['Solana', 'Blockchain', 'Trading', 'QuickNode API', 'telegram client'],
       private: true
     },
     {
       title: 'Artisan Showcase',
       description: t('projects.artisan'),
       image: '../../../public/Site vitrine.jpg',
-      technologies: ['Web Development', 'UI/UX', 'CMS'],
+      technologies: ['Web Development', 'UI/UX', 'CMS', 'SEO', 'Planity API'],
       private: true
     }
   ];
