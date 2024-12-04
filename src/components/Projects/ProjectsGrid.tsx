@@ -44,7 +44,7 @@ const ProjectsGrid = () => {
     {
       title: 'Artisan Showcase',
       description: t('projects.artisan'),
-      image: '../../../public/Site vitrine.jpg',
+      image: '../../../public/vitrine.jpg',
       technologies: ['Web Development', 'UI/UX', 'CMS', 'SEO', 'Planity API'],
       private: true
     }
