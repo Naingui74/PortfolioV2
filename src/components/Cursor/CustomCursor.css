@@ -1,0 +1,195 @@
+/* Hide default cursor */
+* {
+  cursor: none !important;
+}
+
+/* Base cursor container */
+.cursor-container {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+/* Core cursor element */
+.cursor-core {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(45deg, #4f46e5, #7c3aed);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 10px rgba(79, 70, 229, 0.5));
+}
+
+/* Primary ring */
+.cursor-ring {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(124, 58, 237, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s ease-out;
+  animation: pulseRing 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+}
+
+/* Reactive trail */
+.cursor-trail {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.trail-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(45deg, #4f46e5, #7c3aed);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 5px rgba(124, 58, 237, 0.3));
+}
+
+/* Holographic effects */
+.cursor-holo {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  transform: translate(-50%, -50%);
+}
+
+.holo-ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: linear-gradient(
+    45deg,
+    rgba(79, 70, 229, 0) 0%,
+    rgba(124, 58, 237, 0.3) 50%,
+    rgba(99, 102, 241, 0) 100%
+  );
+  animation: holoSpin 2s linear infinite;
+  opacity: 0.6;
+}
+
+/* Glitch effect */
+.cursor-glitch {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.glitch-slice {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(124, 58, 237, 0.2);
+  transform: translateX(0);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  mix-blend-mode: screen;
+}
+
+/* Hover state */
+.cursor-hover .cursor-core {
+  transform: translate(-50%, -50%) scale(1.5);
+  background: linear-gradient(45deg, #6366f1, #7c3aed);
+  animation: pulseCore 1s ease-in-out infinite;
+}
+
+.cursor-hover .cursor-ring {
+  transform: translate(-50%, -50%) scale(1.2);
+  border-color: #6366f1;
+  filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.7));
+  animation: pulseRingHover 1s ease-in-out infinite;
+}
+
+.cursor-hover .holo-ring {
+  animation: holoSpinHover 1s linear infinite;
+  opacity: 0.8;
+}
+
+/* Click state */
+.cursor-clicked .cursor-core {
+  transform: translate(-50%, -50%) scale(0.8);
+  background: linear-gradient(45deg, #7c3aed, #6366f1);
+  animation: clickPulse 0.5s ease-out forwards;
+}
+
+.cursor-clicked .cursor-ring {
+  transform: translate(-50%, -50%) scale(0.9);
+  border-width: 3px;
+  border-color: #7c3aed;
+  animation: clickRing 0.5s ease-out forwards;
+}
+
+.cursor-clicked .glitch-slice {
+  animation: glitchEffect 0.2s ease-out forwards;
+}
+
+/* Animations */
+@keyframes pulseCore {
+  0%, 100% { transform: translate(-50%, -50%) scale(1.5); }
+  50% { transform: translate(-50%, -50%) scale(1.3); }
+}
+
+@keyframes pulseRing {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.3; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+}
+
+@keyframes pulseRingHover {
+  0% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.7; }
+  50% { transform: translate(-50%, -50%) scale(1.4); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.7; }
+}
+
+@keyframes holoSpin {
+  0% { transform: rotate(0deg); opacity: 0.3; }
+  50% { opacity: 0.6; }
+  100% { transform: rotate(360deg); opacity: 0.3; }
+}
+
+@keyframes holoSpinHover {
+  0% { transform: rotate(0deg) scale(1.2); opacity: 0.5; }
+  50% { opacity: 0.8; }
+  100% { transform: rotate(360deg) scale(1.2); opacity: 0.5; }
+}
+
+@keyframes clickPulse {
+  0% { transform: translate(-50%, -50%) scale(1.5); }
+  50% { transform: translate(-50%, -50%) scale(0.8); }
+  75% { transform: translate(-50%, -50%) scale(1.1); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes clickRing {
+  0% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
+}
+
+@keyframes glitchEffect {
+  0% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: translate(0); }
+  20% { clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 80%); transform: translate(-5px); }
+  40% { clip-path: polygon(0 0, 100% 20%, 100% 80%, 0 100%); transform: translate(5px); }
+  60% { clip-path: polygon(0 40%, 100% 0, 100% 100%, 0 60%); transform: translate(-3px); }
+  80% { clip-path: polygon(0 0, 100% 40%, 100% 60%, 0 100%); transform: translate(3px); }
+  100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: translate(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  * {
+    cursor: auto !important;
+  }
+  
+  .cursor-container {
+    display: none;
+  }
+}

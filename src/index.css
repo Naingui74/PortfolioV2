@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1025px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.timeline-container {
+  @apply ml-6 md:w-1/2 md:ml-0;
+}
+
+@screen md {
+  .timeline-container:nth-child(odd) {
+    @apply md:ml-auto md:pl-6;
+  }
+  
+  .timeline-container:nth-child(even) {
+    @apply md:mr-auto md:pr-6;
+  }
+}
+
+.animated-gradient-text {
+  background: linear-gradient(
+    to right,
+    #4f46e5,
+    #7c3aed,
+    #6366f1,
+    #4f46e5
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.moving-border {
+  position: relative;
+}
+
+.moving-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    var(--angle),
+    #4f46e5 0%,
+    #7c3aed 25%,
+    #6366f1 50%,
+    #4f46e5 75%,
+    #7c3aed 100%
+  );
+  border-radius: inherit;
+  animation: rotate-hue 3s linear infinite;
+  z-index: -2;
+  filter: blur(8px);
+  opacity: 0.8;
+}
+
+.moving-border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.97);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotate-hue {
+  to {
+    --angle: 360deg;
+  }
+}
+
+.bg-grid-pattern {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.text-glow {
+  text-shadow: 0 0 10px currentColor;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  border: 2px solid rgba(79, 70, 229, 0.5);
+  border-radius: inherit;
+  animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.gradient-mask {
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
+.glow-shadow {
+  box-shadow: 0 0 30px rgba(79, 70, 229, 0.3);
+  transition: all 0.3s ease;
+}
+
+.glow-shadow:hover {
+  box-shadow: 
+    0 0 30px rgba(124, 58, 237, 0.4),
+    0 0 60px rgba(79, 70, 229, 0.2);
+  transform: translateY(-2px);
+}
+
+.moving-border:hover::before {
+  animation: rotate-hue 1.5s linear infinite;
+  opacity: 1;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+  .glass-effect {
+    backdrop-filter: blur(5px);
+  }
+
+  .moving-border::before {
+    filter: blur(4px);
+  }
+
+  .glow-shadow {
+    box-shadow: 0 0 15px rgba(79, 70, 229, 0.3);
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .animated-gradient-text,
+  .moving-border::before,
+  .pulse-ring::before {
+    animation: none;
+  }
+
+  .hover-scale:hover {
+    transform: none;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
